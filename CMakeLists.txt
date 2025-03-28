@@ -6,6 +6,8 @@ add_subdirectory(deps/threadx)
 add_subdirectory(deps/etl)
 include_directories(includes)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions")
+
 add_executable(app 
     src/demo_threadx.c
     src/cpp_entry.cpp)
