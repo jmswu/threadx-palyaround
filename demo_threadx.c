@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include "tx_api.h"
+#include "cpp_entry.hpp"
 
 #define DEMO_STACK_SIZE         1024
 #define DEMO_BYTE_POOL_SIZE     10240
@@ -386,5 +387,6 @@ void    thread_8_entry(ULONG thread_input)
     {
         tx_thread_sleep(100);
         printf("Hello thread 8\n");
+        cpp_entry();
     }
 }
