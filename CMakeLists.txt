@@ -6,7 +6,7 @@ add_subdirectory(deps/threadx)
 add_subdirectory(deps/etl)
 include_directories(includes)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions")
+target_compile_options(etl INTERFACE -fexceptions)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
