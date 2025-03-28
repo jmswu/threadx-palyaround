@@ -6,7 +6,7 @@
 #include "tx_api.h"
 
 #define DEMO_STACK_SIZE         1024
-#define DEMO_BYTE_POOL_SIZE     9120
+#define DEMO_BYTE_POOL_SIZE     10240
 #define DEMO_BLOCK_POOL_SIZE    100
 #define DEMO_QUEUE_SIZE         100
 
@@ -21,6 +21,7 @@ TX_THREAD               thread_4;
 TX_THREAD               thread_5;
 TX_THREAD               thread_6;
 TX_THREAD               thread_7;
+TX_THREAD               thread_8;
 TX_QUEUE                queue_0;
 TX_SEMAPHORE            semaphore_0;
 TX_MUTEX                mutex_0;
@@ -52,6 +53,7 @@ void    thread_2_entry(ULONG thread_input);
 void    thread_3_and_4_entry(ULONG thread_input);
 void    thread_5_entry(ULONG thread_input);
 void    thread_6_and_7_entry(ULONG thread_input);
+void    thread_8_entry(ULONG thread_input);
 
 
 /* Define main entry point.  */
@@ -142,6 +144,13 @@ CHAR    *pointer = TX_NULL;
     tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_STACK_SIZE, TX_NO_WAIT);
 
     tx_thread_create(&thread_7, "thread 7", thread_6_and_7_entry, 7,  
+            pointer, DEMO_STACK_SIZE, 
+            8, 8, TX_NO_TIME_SLICE, TX_AUTO_START);
+
+    /* Allocate the stack for thread 8.  */
+    tx_byte_allocate(&byte_pool_0, (VOID **) &pointer, DEMO_STACK_SIZE, TX_NO_WAIT);
+    
+    tx_thread_create(&thread_8, "thread 8", thread_8_entry, 8,  
             pointer, DEMO_STACK_SIZE, 
             8, 8, TX_NO_TIME_SLICE, TX_AUTO_START);
 
@@ -368,5 +377,14 @@ UINT    status;
         /* Check status.  */
         if (status != TX_SUCCESS)
             break;
+    }
+}
+
+void    thread_8_entry(ULONG thread_input)
+{
+    for(;;)
+    {
+        tx_thread_sleep(100);
+        printf("Hello thread 8\n");
     }
 }
