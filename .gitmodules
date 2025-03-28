@@ -1,3 +1,6 @@
 [submodule "deps/threadx"]
 	path = deps/threadx
 	url = https://github.com/eclipse-threadx/threadx.git
+[submodule "deps/etl"]
+	path = deps/etl
+	url = https://github.com/ETLCPP/etl.git
