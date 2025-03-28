@@ -3,6 +3,7 @@
    byte pool, and block pool.  */
 
 #include <stdio.h>
+#include "stdbool.h"
 #include "tx_api.h"
 #include "cpp_entry.hpp"
 
@@ -383,10 +384,16 @@ UINT    status;
 
 void    thread_8_entry(ULONG thread_input)
 {
+    bool run_once = false;
+    int counter = 0;
     for(;;)
     {
         tx_thread_sleep(100);
-        printf("Hello thread 8\n");
-        cpp_entry();
+        printf("Hello thread %i\n", counter++);
+        if (!run_once)
+        {
+            cpp_entry();
+            run_once = true;
+        }
     }
 }
