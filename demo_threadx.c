@@ -2,6 +2,7 @@
    threads of different priorities, using a message queue, semaphore, mutex, event flags group, 
    byte pool, and block pool.  */
 
+#include <stdio.h>
 #include "tx_api.h"
 
 #define DEMO_STACK_SIZE         1024
@@ -58,6 +59,7 @@ void    thread_6_and_7_entry(ULONG thread_input);
 int main()
 {
 
+    printf("Hello world!\n");
     /* Enter the ThreadX kernel.  */
     tx_kernel_enter();
 }
