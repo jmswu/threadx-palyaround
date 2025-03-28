@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.28)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE BOOL "Export compile commands")
-project(project_app)
+project(project_app LANGUAGES C CXX)
 
 add_subdirectory(deps/threadx)
 add_subdirectory(deps/etl)
