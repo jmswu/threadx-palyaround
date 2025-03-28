@@ -33,3 +33,6 @@
 
 # Build artifacts
 build/
+
+# VSCode
+.vscode/settings.json
