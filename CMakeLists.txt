@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.28)
+project(project_app)
+add_subdirectory(deps/threadx)
+add_executable(app demo_threadx.c)
+target_link_libraries(app PRIVATE azrtos::threadx)
