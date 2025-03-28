@@ -7,6 +7,8 @@ add_subdirectory(deps/etl)
 include_directories(includes)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fexceptions")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_executable(app 
     src/demo_threadx.c
